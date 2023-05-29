@@ -1,0 +1,17 @@
+import nltk
+import pandas as pd
+
+df = pd.read_csv('movie_review.csv')
+
+df
+
+df.tag.value_counts()
+
+tag_count = df.groupby('tag').count()
+print(tag_count)
+
+import matplotlib.pyplot as plt
+
+plt.bar(tag_count.index.values, tag_count['text'])
+plt.xlabel('Sentiment Review ')
+plt.show()

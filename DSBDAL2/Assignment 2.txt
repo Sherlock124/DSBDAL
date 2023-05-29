@@ -1,0 +1,44 @@
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('student_data.csv')
+
+df
+
+df.info()
+
+df.isnull()
+
+df.notnull()
+
+df.isnull().sum()
+
+df.isna().sum()
+
+for column in df.columns:
+    unique_values = df[column].unique()
+    print(column, unique_values)
+
+from sklearn import preprocessing
+le = preprocessing.LabelEncoder()
+
+df['sex'] = le.fit_transform(df['sex'])
+
+df2 = df
+df2
+
+df2.isnull().sum()
+
+df2.isna().sum()
+
+df2.mean()
+
+df['age'].fillna(16.696203, axis=0, inplace=True)
+df['traveltime'].fillna(1.448101, axis=0, inplace=True)
+df['studytime'].fillna(2.035443, axis=0, inplace=True)
+
+df
+
+import seaborn as sns
+
+sns.boxplot(data=df , x='freetime')

@@ -1,0 +1,18 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('Titanic-Dataset.csv')
+
+df
+
+df.describe()
+
+df.dtypes
+
+df.info()
+
+sns.histplot(df['Fare'])
+
+sns.distplot(df['Fare'])

@@ -1,0 +1,25 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt 
+import seaborn as sns
+
+df = pd.read_csv('covid_vaccine_statewise.csv')
+
+df.describe()
+
+df.info()
+
+doses = df.groupby("State")[["First Dose Administered","Second Dose Administered"]].max()
+
+doses
+
+male = df.groupby("State")[["Male(Individuals Vaccinated)"]].max().sum()
+female = df.groupby("State")[["Female(Individuals Vaccinated)"]].max().sum()
+
+plt.axis("equal")
+plt.title("Vaccination based on Gender in India\n\n\n\n")
+plt.pie([male[0],female[0]], 
+        labels=["Males Vaccinated","Females Vaccinated"], 
+        autopct="%0.2f%%", 
+        startangle=90,
+        radius=1.5);
